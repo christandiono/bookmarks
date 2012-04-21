@@ -8,6 +8,7 @@
     $('.bookmark').click(function (event) {
       var caller = $(event.target);
       $.post('{% url delete %}', {id: caller.attr('id')});
+      caller.parent().hide('fast');
     });
   });
 </script>
