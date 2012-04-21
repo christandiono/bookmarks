@@ -122,7 +122,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
 )
 
-SHOW_TOOLBAR_CALLBACK = lambda x: DEBUG
+DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = lambda request: True 
 
 INSTALLED_APPS = (
     'django.contrib.auth',
