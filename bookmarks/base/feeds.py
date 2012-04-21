@@ -19,12 +19,21 @@ class BookmarkFeed(Feed):
         return get_object_or_404(UserFeed, user__id=user_id, feed_id=feed_id)
 
     def title(self, obj):
-        return obj['data']['from']['name']
+        return "%s %s" % (obj.user.first_name, obj.user.last_name)
 
     def link(self, obj):
-        return 'https://www.facebook.com/%s' % obj['id'].split('_')[0]
+        return HttpResponseRedirect(reverse('mine'))
 
     def description(self, obj):
+        return "An RSS feed of your saved posts."
+
+    def item_title(self, obj):
+        return obj['data']['from']['name']
+
+    def item_link(self, obj):
+        return 'https://www.facebook.com/%s' % obj['id'].split('_')[0]
+
+    def item_description(self, obj):
         return obj['message']
 
     def items(self, obj):
