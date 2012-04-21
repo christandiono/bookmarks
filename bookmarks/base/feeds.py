@@ -13,8 +13,6 @@ import dateutil.parser
 
 from models import UserFeed
 
-
-
 class BookmarkFeed(Feed):
 
     def get_object(self, request, user_id, feed_id):
