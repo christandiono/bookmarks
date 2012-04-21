@@ -207,5 +207,5 @@ try:
 except Exception:
     print 'Unexpected error:', sys.exc_info()
 
-
+DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
 DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = lambda request: True
