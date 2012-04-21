@@ -17,6 +17,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('bookmarks.facebook.auth.urls', namespace="facebook")),
-    url(r'^$', 'base.views.index', name="index"),
-    url(r'^mine/$', 'base.views.my_bookmarks', name="mine")
+    url(r'^$', 'bookmarks.base.views.index', name="index"),
+    url(r'^mine/$', 'bookmarks.base.views.my_bookmarks', name="mine")
 )
