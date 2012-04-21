@@ -15,7 +15,7 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
     title = models.TextField(default="")
     description = models.TextField(default="")
-    date=models.DateField(default=None)
+    date=models.DateField(default=None, null=True)
 
     def get_url(self):
         return "https://www.facebook.com/%s" % self.fb_id
