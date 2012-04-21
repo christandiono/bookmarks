@@ -10,10 +10,10 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
 
     def get_url(self):
-        return "https://www.facebook.com/%s" % fb_id
+        return "https://www.facebook.com/%s" % self.fb_id
 
     def __unicode__(self):
-        return unicode(fb_id)
+        return unicode(self.fb_id)
 
 class UserFeed(models.Model): # authenticates a user to read a certain feed
     user = models.ForeignKey(User)
