@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from bookmarks.base.models import Bookmark
 
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 import urllib2
