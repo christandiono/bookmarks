@@ -14,6 +14,11 @@ def index(request):
 @login_required
 def my_bookmarks(request):
     bookmarks = Bookmark.objects.filter(user=request.user)
+    for mark in bookmarks:
+        try:
+            unicode(mark)
+        except:
+            pass
     return render_to_response('list.html', {'bookmarks': bookmarks}, context_instance=RequestContext(request))
 
 def api_submit(request):

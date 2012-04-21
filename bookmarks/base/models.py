@@ -21,8 +21,8 @@ class Bookmark(models.Model):
         return "https://www.facebook.com/%s" % self.fb_id
 
     def __unicode__(self):
-        if not self.title or not self.description or not self.date:
-#            try:
+        if True or not self.title or not self.description or not self.date:
+            try:
                 response = urllib2.urlopen('https://graph.facebook.com/%s?%s' % (self.fb_id, urllib.urlencode(dict(access_token=self.user.password))))
                 dumped = json.loads(response.read())
                 self.title = dumped.get('from').get('name')
@@ -31,7 +31,7 @@ class Bookmark(models.Model):
                 if timeConsist:
                     self.date=dateutil.parser.parse(timeConsist)
                 self.save()
-#            except:
+            except:
                 pass # ignore all problems
 
         return unicode("%s--%s" % (self.title, self.description))
