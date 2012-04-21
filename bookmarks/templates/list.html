@@ -2,6 +2,7 @@
 
 {% block content %}
 <p>
+Here are the bookmarks you've saved. You can also get an RSS feed <a href="http://electric-sword-7186.herokuapp.com{% url feed user_id=request.user.id feed_id=feed_id %}">here</a>.
 {% if bookmarks %}
 <ul>
   {% for b in bookmarks %}
