@@ -1,3 +1,5 @@
+from models import UserFeed
+
 import uuid
 
 def feed_id_processor(request):
