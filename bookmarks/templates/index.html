@@ -1,14 +1,7 @@
-<!doctype html>
-<html>
-<head>
-    <title>thingy</title>
-</head>
-<body>
-  <p>
-  {% if request.user.is_authenticated %}
-  Welcome, {{ request.user.username }}!
-  {% else %}
-  <a href="{% url facebook:login %}">login</a>
-  {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>
+    Click <a href="{% url mine %}">here</a> to see your bookmarks.
+    </p>
+{% endblock content %}

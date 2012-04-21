@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>thingy</title>
+  </head>
+  <body>
+    <p>
+    {% if request.user.is_authenticated %}
+    Welcome, {{ request.user.first_name }}!
+    {% else %}
+    <a href="{% url facebook:login %}">login</a>
+    {% endif %}
+    </p>
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>
