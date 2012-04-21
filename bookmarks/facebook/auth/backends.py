@@ -2,6 +2,7 @@ import cgi
 import json
 import logging
 import urllib
+import urllib2
 
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -27,7 +28,7 @@ class FacebookBackend(ModelBackend):
         args = dict(client_id=settings.FACEBOOK_APP_ID, redirect_uri=redirect_uri)
         args["client_secret"] = settings.FACEBOOK_APP_SECRET
         args["code"] = verification_code
-        response = urllib.urlopen(
+        response = urllib2.urlopen(
                 "https://graph.facebook.com/oauth/access_token",
                 urllib.urlencode(args))
         if response.status_code != 200:
@@ -37,7 +38,7 @@ class FacebookBackend(ModelBackend):
 
         # Download the user profile and cache a local instance of the
         # basic profile info
-        response = urllib.urlopen(
+        response = urllib2.urlopen(
             "https://graph.facebook.com/me?",
             urllib.urlencode(dict(access_token=access_token)))
         profile = simplejson.loads(response.content)
