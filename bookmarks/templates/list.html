@@ -19,7 +19,7 @@ Here are the bookmarks you've saved. You can also get an RSS feed <a href="http:
 
 <ul>
   {% for b in bookmarks %}
-    <li><a target="_blank" href="{{ b.get_url }}" id="{{ b.id }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }} (<a id="{{ b.id }}" onclick="javascript:clickFunc(this);">Delete</a>)</li>
+  <li><div class="thickmargin"><a target="_blank" href="{{ b.get_url }}" id="{{ b.id }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }} (<a id="{{ b.id }}" onclick="javascript:clickFunc(this);">Delete</a>)</div></li>
   {% endfor %}
 </ul>
 
