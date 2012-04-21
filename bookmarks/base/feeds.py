@@ -19,13 +19,13 @@ class BookmarkFeed(Feed):
         return get_object_or_404(UserFeed, user__id=user_id, feed_id=feed_id)
 
     def title(self, obj):
-        return obj.fb_id
+        return obj['data']['from']['name']
 
     def link(self, obj):
-        return obj.get_link()
+        return 'https://www.facebook.com/%s' % obj['id'].split('_')[0]
 
     def description(self, obj):
-        return obj.get_desc()
+        return obj['message']
 
     def items(self, obj):
         marks = Bookmark.objects.filter(user=obj.user)

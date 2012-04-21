@@ -10,7 +10,7 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
 
     def get_url(self):
-        return "https://facebook.com/posts/%s" % fb_id
+        return "https://www.facebook.com/%s" % fb_id
 
     def __unicode__(self):
         return unicode(fb_id)
