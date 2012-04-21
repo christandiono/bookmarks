@@ -28,7 +28,7 @@ class Bookmark(models.Model):
                 self.title = dumped.get('from').get('name')
                 self.description = dumped.get('message')
                 timeConsist=dumped.get('updated_time') or dumped.get('created_time')
-	        if timeConsist:
+                if timeConsist:
                     self.date=dateutil.parser.parse(timeConsist)
                 self.save()
             except:
