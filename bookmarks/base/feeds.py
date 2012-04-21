@@ -10,7 +10,7 @@ import dateutil
 
 
 
-class BookmarksFeed(Feed):
+class BookmarkFeed(Feed):
 
     def get_object(self, request, user_id, feed_id):
         return get_object_or_404(UserFeed, user__id=user_id, feed_id=feed_id)
