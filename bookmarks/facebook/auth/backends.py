@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
 from django.conf import settings
 
-import facebook
+import bookmarks.facebook
 
 
 class FacebookBackend(ModelBackend):
