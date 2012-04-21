@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for b in bookmarks %}
-{{ b }}
-{% endfor %}
+<p>
+{% if bookmarks %}
+<ul>
+  {% for b in bookmarks %}
+  <li>{{ b }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+Nothing here yet! Go bookmark some stuff, then come back!
+{% endif %}
+</p>
 {% endblock content %}

@@ -8,4 +8,4 @@ from django.contrib.auth.models import User
 class Bookmark(models.Model):
     user = models.ForeignKey(User)
     status_id = models.IntegerField()
-    comment_id = models.IntegerField()
+    comment_id = models.IntegerField(blank=True, null=True)
