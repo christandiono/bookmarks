@@ -16,7 +16,7 @@ Nothing here yet! Go bookmark some stuff, then come back!
 </p>
 {% if bad %}
 <p>
-Also, there were {{ bad }} post{{ bad|pluralize }} we couldn't get. Sorry!
+Also, there w{{ bad|pluralize:"as,ere" }} {{ bad }} post{{ bad|pluralize }} we couldn't get. Sorry!
 </p>
 {% endif %}
 {% endblock content %}
