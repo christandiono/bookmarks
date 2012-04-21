@@ -36,7 +36,7 @@ class BookmarkFeed(Feed):
         return 'https://www.facebook.com/%s' % obj['id'].split('_')[0]
 
     def item_description(self, obj):
-        return obj['message']
+        return obj['from']['name'] + ": " + obj['message']
 
     def items(self, obj):
         marks = Bookmark.objects.filter(user=obj.user)
@@ -49,6 +49,7 @@ class BookmarkFeed(Feed):
                 if comments:
                     data = comments.get('data')
                     for d in data:
+                        d['title'] = dumped.get('from').get('name')
                         all_comments.append(d)
             except:
                 pass # ignore all problems
