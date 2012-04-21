@@ -53,7 +53,7 @@ class BookmarkFeed(Feed):
                         all_comments.append(d)
             except:
                 pass # ignore all problems
-        my_cmp = lambda x, y: cmp(dateutil.parser.parse(x['created_time']), dateutil.parser.parse(y['created_time']))
+        my_cmp = lambda x, y: -cmp(dateutil.parser.parse(x['created_time']), dateutil.parser.parse(y['created_time']))
         all_comments.sort(cmp=my_cmp)
         return all_comments
 
