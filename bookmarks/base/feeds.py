@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 import urllib2
 import urllib
 import json
-import dateutil
+import dateutil.parser
 
 from models import UserFeed
 
