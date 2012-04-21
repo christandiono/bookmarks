@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 
-import base
+from bookmarks import base
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
