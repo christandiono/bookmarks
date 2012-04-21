@@ -2,6 +2,19 @@
 <html>
   <head>
     <title>thingy</title>
+    <style>  
+    li{  
+      background: #E7EBF2;  
+      color: black;  
+      border : white 4px ridge;
+      width:600px
+      padding-top: 10px;  
+      padding-right: 0px;  
+      padding-bottom: 10px;  
+      padding-left: 2px;  
+    }  
+    </style>  
+
     {% if request.user.is_authenticated %}
     <link rel="alternate" title="My comments" href="http://electric-sword-7186.herokuapp.com{% url feed user_id=user.id feed_id=feed_id %}" type="application/rss+xml" />
     {% endif %}
@@ -17,6 +30,6 @@
     {% endif %}
     </p>
     {% block content %}
-    {% endblock content %}
+    {% endblock content %}        
   </body>
 </html>
