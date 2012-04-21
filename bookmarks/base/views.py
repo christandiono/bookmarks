@@ -19,11 +19,19 @@ def my_bookmarks(request):
             unicode(mark)
         except:
             pass
-    return render_to_response('list.html', {'bookmarks': bookmarks}, context_instance=RequestContext(request))
+    real_bookmarks = []
+    bad = 0
+    for mark in bookmarks:
+        if not mark.date:
+            bad += 1
+        else:
+            real_bookmarks.append(mark)
+    return render_to_response('list.html', {'bookmarks': real_bookmarks, 'bad': bad}, context_instance=RequestContext(request))
 
 def api_submit(request):
     if (request.method=='POST'):
         fbID=request.POST["fb_id"]
-        Bookmark(fb_id=fbID, user=request.user).save()
+        if not Bookmark.objects.filter(fb_id=fbID, user=request.user).exists():
+            Bookmark(fb_id=fbID, user=request.user).save()
         return HttpResponse("The reuqest is POST.")
 
