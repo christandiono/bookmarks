@@ -60,7 +60,7 @@ def login(request):
     if verification_code:
         return authenticate(request)
     args = dict(client_id=settings.FACEBOOK_APP_ID, redirect_uri=request.build_absolute_uri())
-    scope = ""
+    scope = "read_stream"
     return HttpResponseRedirect('https://graph.facebook.com/oauth/authorize?scope=%s&%s' %
                                 (scope, urllib.urlencode(args)))
 

@@ -43,8 +43,8 @@ class BookmarkFeed(Feed):
         all_comments = []
         for mark in marks:
             try:
-                response = urllib2.urlopen('https://graph.facebook.com/%s?%s' % (obj.fb_id, urllib.urlencode(dict(access_token=user.password))))
-                dumped = json.loads(response)
+                response = urllib2.urlopen('https://graph.facebook.com/%s?%s' % (mark.fb_id, urllib.urlencode(dict(access_token=user.password))))
+                dumped = json.loads(response.read())
                 comments = response.get('comments')
                 if comments:
                     data = response.get('data')
