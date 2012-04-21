@@ -30,7 +30,7 @@ class BookmarkFeed(Feed):
         return "An RSS feed of your saved posts."
 
     def item_title(self, obj):
-        return obj['title']
+        return 'Post by ' + obj['title']
 
     def item_link(self, obj):
         return 'https://www.facebook.com/%s' % obj['id'].split('_')[0]
