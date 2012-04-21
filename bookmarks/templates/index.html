@@ -6,7 +6,7 @@
 <body>
   <p>
   {% if request.user.is_authenticated %}
-  Welcome, {% request.user.username %}!
+  Welcome, {{ request.user.username }}!
   {% else %}
   <a href="{% url facebook:login %}">login</a>
   {% endif %}
