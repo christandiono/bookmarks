@@ -17,7 +17,7 @@
 Here are the bookmarks you've saved. You can also get an RSS feed <a href="http://electric-sword-7186.herokuapp.com{% url feed user_id=request.user.id feed_id=feed_id %}">here</a>.
 <ul>
   {% for b in bookmarks %}
-  <li><a href="{{ b.get_url }}" id="{{ b.id }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }} (<a id="{{ b.id }}" onclick="javascript:clickFunc(this);">Delete</a>)</li>
+  <li><a target="_blank" href="{{ b.get_url }}" id="{{ b.id }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }} (<a id="{{ b.id }}" onclick="javascript:clickFunc(this);">Delete</a>)</li>
   {% endfor %}
 </ul>
 {% else %}
