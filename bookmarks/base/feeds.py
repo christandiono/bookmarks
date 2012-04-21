@@ -9,6 +9,8 @@ import urllib
 
 import dateutil
 
+from models import UserFeed
+
 
 
 class BookmarkFeed(Feed):
