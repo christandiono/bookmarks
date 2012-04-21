@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_evolution',
     'debug_toolbar',
     'gunicorn',
     'bookmarks.facebook',
