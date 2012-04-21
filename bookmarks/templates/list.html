@@ -5,7 +5,7 @@
 {% if bookmarks %}
 <ul>
   {% for b in bookmarks %}
-  <li>{{ b }}</li>
+  <li><a href="{{ b.get_url }}">{{ b }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

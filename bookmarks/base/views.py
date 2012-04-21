@@ -3,9 +3,9 @@
 from models import Bookmark
 from models import UserFeed
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import HTTpResponse
+from django.http import HttpResponse
 
 
 def index(request):
@@ -19,6 +19,6 @@ def my_bookmarks(request):
 def api_submit(request):
     if (request.method=='POST'):
         fbID=request.POST["fb_id"]
-        UserFeed(fb_id=fbID, user=request.user).save()
+        Bookmark(fb_id=fbID, user=request.user).save()
         return HttpResponse("The reuqest is POST.")
 
