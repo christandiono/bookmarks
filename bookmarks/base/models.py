@@ -14,6 +14,7 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
     title = models.TextField(default="")
     description = models.TextField(default="")
+    date=models.DateField(default=None)
 
     def get_url(self):
         return "https://www.facebook.com/%s" % self.fb_id
@@ -25,6 +26,9 @@ class Bookmark(models.Model):
                 dumped = json.loads(response.read())
                 self.title = dumped.get('from').get('name')
                 self.description = dumped.get('message')
+		if dumped.get('updated_time') or dumped.get('created_time'):
+			timeConsist=dumped.get('updated_time').split('T')
+			self.date=timeConsist[0]+" "+(timeConsist[1].split('+'))[0]
                 self.save()
             except:
                 pass # ignore all problems
