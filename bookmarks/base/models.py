@@ -16,4 +16,4 @@ class Bookmark(models.Model):
 
 class UserFeed(models.Model): # authenticates a user to read a certain feed
     user = models.ForeignKey(User)
-    feed_id = models.TextField()
+    fb_id = models.TextField()
