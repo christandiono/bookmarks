@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markup %}
 
 {% block content %}
 <p>
@@ -6,7 +7,7 @@ Here are the bookmarks you've saved. You can also get an RSS feed <a href="http:
 {% if bookmarks %}
 <ul>
   {% for b in bookmarks %}
-  <li><a href="{{ b.get_url }}">{{ b.title }}</a><br />{{ b.description }}</li>
+  <li><a href="{{ b.get_url }}">{{ b.title }}</a><br />{{ b.description|markdown }}</li>
   {% endfor %}
 </ul>
 {% else %}
