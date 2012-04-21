@@ -5,3 +5,4 @@ argparse==1.2.1
 distribute==0.6.24
 wsgiref==0.1.2
 gunicorn==0.14.2
+Django==1.4
