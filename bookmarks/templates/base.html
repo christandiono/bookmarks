@@ -5,18 +5,19 @@
     <style>  
       div.thickmargin {
         margin: 10px;
-      background: #E7EBF2;  
+        background: #E7EBF2;  
       }
-    li{  
-      background: white;
-      color: black;  
-      width:600px
-      padding-top: 10px;  
-      padding-right: 0px;  
-      padding-bottom: 10px;  
-      padding-left: 2px;  
-      list-style-type: none;
-    }  
+      li {  
+        background: white;
+        color: black;  
+        width:600px
+        padding: 10px;  
+        list-style-type: none;
+      }  
+
+      a {
+        color: #3b5998;
+      }
     </style>  
 
     {% if request.user.is_authenticated %}
