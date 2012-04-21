@@ -146,7 +146,7 @@ LOGGING = {
     }
 }
 
-AUTHENTICATION_BACKENDS = ('facebook.auth.backends.FacebookBackend',)
+AUTHENTICATION_BACKENDS = ('bookmarks.facebook.auth.backends.FacebookBackend',)
 
 FACEBOOK_APP_ID = '438195499528827'
 FACEBOOK_APP_SECRET = '9ecf505a5c850e26ce5c1ed9cbe1b0b7'
