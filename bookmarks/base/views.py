@@ -19,6 +19,6 @@ def my_bookmarks(request):
 def api_submit(request):
     if (request.method=='POST'):
         fbID=request.POST["fb_id"]
-        UserFeed(fb_id=fbID, user=request.user).save()
+        Bookmark(fb_id=fbID, user=request.user).save()
         return HttpResponse("The reuqest is POST.")
 
