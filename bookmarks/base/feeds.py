@@ -24,7 +24,7 @@ class BookmarkFeed(Feed):
         return "%s %s" % (obj.user.first_name, obj.user.last_name)
 
     def link(self, obj):
-        return HttpResponseRedirect(reverse('mine'))
+        return 'http://electric-sword-7186.herokuapp.com%s' % reverse('mine')
 
     def description(self, obj):
         return "An RSS feed of your saved posts."
