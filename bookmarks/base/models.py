@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 import json
 import urllib2
 import urllib
+import dateutil.parser
 
 # Create your models here.
 
@@ -14,6 +15,7 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
     title = models.TextField(default="")
     description = models.TextField(default="")
+    date=models.DateField(default=None)
 
     def get_url(self):
         return "https://www.facebook.com/%s" % self.fb_id
@@ -25,6 +27,9 @@ class Bookmark(models.Model):
                 dumped = json.loads(response.read())
                 self.title = dumped.get('from').get('name')
                 self.description = dumped.get('message')
+                timeConsist=dumped.get('updated_time') or dumped.get('created_time')
+                if timeConsist:
+                    self.date=dateutil.parser.parse(timeConsist)
                 self.save()
             except:
                 pass # ignore all problems
