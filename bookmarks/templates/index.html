@@ -4,6 +4,11 @@
     <title>thingy</title>
 </head>
 <body>
-    <a href="{% url facebook:login %}">login</a>
+  <p>
+  {% if request.user.is_authenticated %}
+  Welcome, {% request.user.username %}!
+  {% else %}
+  <a href="{% url facebook:login %}">login</a>
+  {% endif %}
 </body>
 </html>
