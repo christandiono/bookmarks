@@ -6,7 +6,7 @@
 <script>
   var clickFunc = function (caller) {
       $.post('{% url delete %}', {id: caller.id});
-      caller.parent().hide('fast');
+      $(caller).parent().hide('fast');
     };
 </script>
 {% endblock head %}
