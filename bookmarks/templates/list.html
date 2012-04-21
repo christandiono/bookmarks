@@ -4,9 +4,8 @@
 {% block head %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <script>
-  var clickFunc = function (event) {
-      var caller = $(event.target);
-      $.post('{% url delete %}', {id: caller.attr('id')});
+  var clickFunc = function (caller) {
+      $.post('{% url delete %}', {id: caller.id});
       caller.parent().hide('fast');
     };
 </script>
