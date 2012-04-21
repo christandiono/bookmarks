@@ -15,13 +15,13 @@ class Bookmark(models.Model):
     fb_id = models.TextField() # ?!?!
     title = models.TextField(default="")
     description = models.TextField(default="")
-    date=models.DateField(default=None)
+    date=models.DateField(default=None, null=True)
 
     def get_url(self):
         return "https://www.facebook.com/%s" % self.fb_id
 
     def __unicode__(self):
-        if not self.title and not self.description:
+        if not self.title or not self.description or not self.date:
             try:
                 response = urllib2.urlopen('https://graph.facebook.com/%s?%s' % (self.fb_id, urllib.urlencode(dict(access_token=self.user.password))))
                 dumped = json.loads(response.read())

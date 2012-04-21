@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
+{% load markup %}
 
 {% block content %}
 <p>
-Here are the bookmarks you've saved. You can also get an RSS feed <a href="http://electric-sword-7186.herokuapp.com{% url feed user_id=request.user.id feed_id=feed_id %}">here</a>.
 {% if bookmarks %}
+Here are the bookmarks you've saved. You can also get an RSS feed <a href="http://electric-sword-7186.herokuapp.com{% url feed user_id=request.user.id feed_id=feed_id %}">here</a>.
 <ul>
   {% for b in bookmarks %}
-  <li><a href="{{ b.get_url }}">{{ b.title }} {{ b.date }}</a><br />{{ b.description }}</li>
+  <li><a href="{{ b.get_url }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }}</li>
   {% endfor %}
 </ul>
 {% else %}
 Nothing here yet! Go bookmark some stuff, then come back!
 {% endif %}
 </p>
+{% if bad %}
+<p>
+Also, there w{{ bad|pluralize:"as,ere" }} {{ bad }} post{{ bad|pluralize }} we couldn't get. Sorry!
+</p>
+{% endif %}
 {% endblock content %}

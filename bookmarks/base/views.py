@@ -13,12 +13,24 @@ def index(request):
 
 @login_required
 def my_bookmarks(request):
-    bookmarks = Bookmark.objects.filter(user=request.user)
-    return render_to_response('list.html', {'bookmarks': bookmarks}, context_instance=RequestContext(request))
+    bookmarks = Bookmark.objects.filter(user=request.user).order_by('-date')
+    real_bookmarks = []
+    bad = 0
+    for mark in bookmarks:
+        try:
+            unicode(mark)
+            if not mark.date:
+                bad += 1
+            else:
+                real_bookmarks.append(mark)
+        except:
+            pass
+    return render_to_response('list.html', {'bookmarks': real_bookmarks, 'bad': bad}, context_instance=RequestContext(request))
 
 def api_submit(request):
     if (request.method=='POST'):
         fbID=request.POST["fb_id"]
-        Bookmark(fb_id=fbID, user=request.user).save()
-        return HttpResponse("The reuqest is POST.")
+        if not Bookmark.objects.filter(fb_id=fbID, user=request.user).exists():
+            Bookmark(fb_id=fbID, user=request.user).save()
+        return HttpResponse("The request is POST.")
 
