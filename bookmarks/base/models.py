@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 import json
 import urllib2
 import urllib
+import dateutil.parser
 
 # Create your models here.
 
@@ -26,9 +27,9 @@ class Bookmark(models.Model):
                 dumped = json.loads(response.read())
                 self.title = dumped.get('from').get('name')
                 self.description = dumped.get('message')
-		if dumped.get('updated_time') or dumped.get('created_time'):
-			timeConsist=dumped.get('updated_time').split('T')
-			self.date=timeConsist[0]+" "+(timeConsist[1].split('+'))[0]
+                timeConsist=dumped.get('updated_time') or dumped.get('created_time')
+	        if timeConsist:
+                    self.date=dateutil.parser.parse(timeConsist)
                 self.save()
             except:
                 pass # ignore all problems
