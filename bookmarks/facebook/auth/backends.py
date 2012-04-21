@@ -31,9 +31,9 @@ class FacebookBackend(ModelBackend):
         response = urllib2.urlopen(
                 "https://graph.facebook.com/oauth/access_token",
                 urllib.urlencode(args))
-        if response.status_code != 200:
-            return None
-        response = cgi.parse_qs(response.content)
+#        if response.status_code != 200:
+#            return None
+        response = cgi.parse_qs(response.read())
         access_token = response["access_token"][-1]
 
         # Download the user profile and cache a local instance of the
@@ -41,7 +41,7 @@ class FacebookBackend(ModelBackend):
         response = urllib2.urlopen(
             "https://graph.facebook.com/me?",
             urllib.urlencode(dict(access_token=access_token)))
-        profile = simplejson.loads(response.content)
+        profile = json.loads(response.read())
         user = User(id=str(profile["id"]),
                     username=str(profile["id"]),
                     email=profile.get("email", ''),
