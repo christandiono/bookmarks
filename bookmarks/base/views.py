@@ -27,10 +27,18 @@ def my_bookmarks(request):
             pass
     return render_to_response('list.html', {'bookmarks': real_bookmarks, 'bad': bad}, context_instance=RequestContext(request))
 
+@login_required
 def api_submit(request):
     if (request.method=='POST'):
         fbID=request.POST["fb_id"]
         if not Bookmark.objects.filter(fb_id=fbID, user=request.user).exists():
             Bookmark(fb_id=fbID, user=request.user).save()
+        return HttpResponse("The request is POST.")
+
+@login_required
+def api_delete(request):
+    if (request.method=='POST'):
+        id = request.POST.get('id')
+        Bookmark.objects.filter(id=id).delete()
         return HttpResponse("The request is POST.")
 

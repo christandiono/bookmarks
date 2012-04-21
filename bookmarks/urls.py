@@ -24,5 +24,6 @@ urlpatterns = patterns('',
     url(r'^mine/$', 'bookmarks.base.views.my_bookmarks', name="mine"),
     url(r'^feed/(?P<user_id>\w+)/(?P<feed_id>[a-f0-9]+)/$', BookmarkFeed(), name="feed"),
     url(r'^api/submit/$','bookmarks.base.views.api_submit',name="submit")
+    url(r'^api/delete/$','bookmarks.base.views.api_delete',name="delete")
 
 )

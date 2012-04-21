@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 {% load markup %}
 
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js">
+<script>
+  $(document).ready(function() {
+    $('.bookmark').click(function (event) {
+      var caller = $(event.target);
+      $.post('{% url delete %}', {id: caller.attr('id')});
+    });
+  });
+</script>
+{% endblock head %}
+
 {% block content %}
 <p>
 {% if bookmarks %}
 Here are the bookmarks you've saved. You can also get an RSS feed <a href="http://electric-sword-7186.herokuapp.com{% url feed user_id=request.user.id feed_id=feed_id %}">here</a>.
 <ul>
   {% for b in bookmarks %}
-  <li><a href="{{ b.get_url }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }}</li>
+  <li><a href="{{ b.get_url }}" id="{{ b.id }}">{{ b.title }}-{{ b.date }}</a><br />{{ b.description|markdown }} (<a href="javascript:void(0);">Delete</a>)</li>
   {% endfor %}
 </ul>
 {% else %}
