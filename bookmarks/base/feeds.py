@@ -42,7 +42,7 @@ class BookmarkFeed(Feed):
         marks = Bookmark.objects.filter(user=obj.user)
         all_comments = []
         for mark in marks:
-#            try:
+            try:
                 response = urllib2.urlopen('https://graph.facebook.com/%s?%s' % (mark.fb_id, urllib.urlencode(dict(access_token=obj.user.password))))
                 dumped = json.loads(response.read())
                 comments = dumped.get('comments')
@@ -50,7 +50,7 @@ class BookmarkFeed(Feed):
                     data = comments.get('data')
                     for d in data:
                         all_comments.append(d)
-#            except:
+            except:
                 pass # ignore all problems
         my_cmp = lambda x, y: cmp(dateutil.parser.parse(x['created_time']), dateutil.parser.parse(y['created_time']))
         all_comments.sort(cmp=my_cmp)
