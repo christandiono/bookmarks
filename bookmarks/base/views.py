@@ -14,7 +14,6 @@ def index(request):
 @login_required
 def my_bookmarks(request):
     bookmarks = Bookmark.objects.filter(user=request.user).order_by('-date')
-    for mark in bookmarks:
     real_bookmarks = []
     bad = 0
     for mark in bookmarks:
