@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('bookmarks.facebook.auth.urls', namespace="facebook")),
     url(r'^$', 'bookmarks.base.views.index', name="index"),
     url(r'^mine/$', 'bookmarks.base.views.my_bookmarks', name="mine"),
-    (r'^feed/(?P<user_id>\w+)/(?P<feed_id>[a-f0-9]+)/$', BookmarkFeed()),
+    url(r'^feed/(?P<user_id>\w+)/(?P<feed_id>[a-f0-9]+)/$', BookmarkFeed(), name="feed"),
     url(r'^api/submit/$','bookmarks.base.views.api_submit',name="submit")
 
 )

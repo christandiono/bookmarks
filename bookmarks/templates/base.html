@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>thingy</title>
+    {% if request.user.is_authenticated %}
+    <link rel="alternate" title="My comments" href="http://electric-sword-7186.herokuapp.com{% url feed user_id=user.id feed_id=feed_id %}" type="application/rss+xml" />
+    {% endif %}
   </head>
   <body>
     <p>
