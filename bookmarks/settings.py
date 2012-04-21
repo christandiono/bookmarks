@@ -122,7 +122,6 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
 )
 
-DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = lambda request: True 
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -140,6 +139,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -206,3 +206,6 @@ try:
             DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 except Exception:
     print 'Unexpected error:', sys.exc_info()
+
+
+DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = lambda request: True
